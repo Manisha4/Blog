@@ -1,0 +1,15 @@
+{% block head %}
+<title>Comment made</title>
+{% endblock %}
+
+{% block body %}
+<h2>Comment :</h2>
+  <ul>
+      <li> {{ data.author}}</li>
+      <li> {{ data.time}}</li>
+      <li> {{ data.email}}</li>
+      <li> {{ data.comment}}</li>
+      <li> {{ data.article_id}}</li>
+  </ul>
+<a href="{{ url_for('index') }}">Go back to the main page</a>
+{% endblock %}

@@ -152,7 +152,22 @@ p {
     </div>
   </div>
 <!-- END BLOG ENTRIES -->
-
+<div class="info">
+  <h2>Comments</h2>
+      {% if data %}
+      <ul>
+          {% for k,comment in data.items() %}
+            <li>
+              <h5>{{comment.author }}</h5> 
+              <p>{{ comment.time }}</p>
+              <p>{{ comment.comment }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        No comments!
+      {% endif %}
+  </div>
 
   <!-- Comments -->
   <div id="respond">
