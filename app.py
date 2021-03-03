@@ -1,9 +1,10 @@
-from flask import Flask, render_template, url_for,request,redirect
+from flask import Flask, render_template, url_for,request,redirect,flash
 from flask_pymongo import pymongo
 from datetime import datetime
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+app.secret_key = 'super secret key'
 
 
 client = pymongo.MongoClient("mongodb+srv://new:newpassword123@cluster0.pw6li.mongodb.net/blog?retryWrites=true&w=majority")
@@ -48,10 +49,8 @@ def my_form_post():
         'comment': comment,
         'article_id':article_id
     }
-    print(data)
-    x = cursor.insert_one(insDoc)
-    print(x)
-    return render_template('intermediate_comment.html', data=insDoc)
+    return redirect(url_for('index',data=insDoc))
+
 
 
 if __name__ == "__main__":
